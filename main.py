@@ -46,3 +46,18 @@ vector1 = [1, 2, 3]
 vector2 = [4, 5, 6]
 cosine_distance(vector1, vector2)
 
+from datetime import datetime
+
+def days_difference(date1_str, date2_str):
+    # task 3
+    date_format = "%Y-%m-%d"
+    try:
+        date1 = datetime.strptime(date1_str, date_format)
+        date2 = datetime.strptime(date2_str, date_format)
+        delta = date2 - date1
+        days = abs(delta.days)
+        print(f"Difference in days: {days}")
+    except ValueError as e:
+        print(f"Error parsing dates: {e}")
+
+days_difference("2023-05-01", "2023-05-10")  
