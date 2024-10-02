@@ -61,3 +61,105 @@ def days_difference(date1_str, date2_str):
         print(f"Error parsing dates: {e}")
 
 days_difference("2023-05-01", "2023-05-10")  
+
+class Node:
+    def __init__(self, value):
+        self.value = value
+        self.next = None  
+        self.prev = None    
+
+class DoublyLinkedList:
+    
+    def __init__(self):
+        self.head = None
+        self.tail = None
+
+    def push(self, value):
+        
+        new_node = Node(value)
+        if not self.head:
+            self.head = self.tail = new_node
+        else:
+            self.tail.next = new_node
+            new_node.prev = self.tail
+            self.tail = new_node
+
+    def pop(self):
+        
+        if not self.tail:
+            return None
+        value = self.tail.value
+        if self.head == self.tail:
+            self.head = self.tail = None
+        else:
+
+            self.tail = self.tail.prev
+            self.tail.next = None
+        return value
+
+    def unshift(self, value):
+        new_node = Node(value)
+        if not self.head:
+            self.head = self.tail = new_node
+        else:
+            new_node.next = self.head
+            self.head.prev = new_node
+            self.head = new_node
+
+    def shift(self):
+        if not self.head: 
+            return None
+        value = self.head.value
+        if self.head == self.tail:
+            self.head = self.tail = None
+        else:
+            self.head = self.head.next
+            self.head.prev = None
+        return value
+
+    def __iter__(self):
+        current = self.head
+        while current:
+            yield current.value
+            current = current.next
+
+dll = DoublyLinkedList()
+dll.push(1)     
+dll.push(2)     
+dll.unshift(0)
+print(list(dll))
+dll.pop()
+dll.shift()
+print(list(dll))
+
+def query_word_distribution(queries):
+
+    total_queries = len(queries)
+    word_count_dict = {}
+
+    for query in queries:
+        word_count = len(query.split())
+        word_count_dict[word_count] = word_count_dict.get(word_count, 0) + 1
+
+    for word_count in sorted(word_count_dict):
+        count = word_count_dict[word_count]
+        percentage = (count / total_queries) * 100
+        print(f"{word_count} слово: {percentage:.2f}%")
+
+search_queries = [
+    "watch new movies",
+    "coffee near me",
+    "how to find the determinant",
+    "python",
+    "data science jobs in UK",
+    "courses for data science",
+    "taxi",
+    "google",
+    "yandex",
+    "bing",
+    "foreign exchange rates USD/BYN",
+    "Netflix movies watch online free",
+    "Statistics courses online from top universities"
+]
+
+query_word_distribution(search_queries)
