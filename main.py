@@ -1,5 +1,5 @@
 def get_unique_sorted(int_list):
-    # Я бы мог еще использовать sorted и set тогда вообще решение было бы в 2 строчки. Но наверное нельзя.
+    # I could also use sorted and set, then the solution would be in 2 lines. But probably not.
     unique_values = []
     for num in int_list:
         if num not in unique_values:
@@ -20,15 +20,15 @@ print(result)
 
 def cosine_distance(vec1, vec2):
     """
-    По Вашей ссылке я ничего не понял)) Сделал по этой ссылке: https://habr.com/ru/companies/sberbank/articles/726532/
+    I didn't find any formula on your link, I did it on this link: https://habr.com/ru/companies/sberbank/articles/726532/
     """
 
     if len(vec1) != len(vec2):
-        print("Невозможно вычислить: векторы разной длины.")
+        print("Unable to calculate: vectors of different lengths.")
         return
 
     if not any(vec1) or not any(vec2):
-        print("Невозможно вычислить: один из векторов является нулевым.")
+        print("Unable to calculate: one of the vectors is zero.")
         return
 
 
@@ -40,7 +40,7 @@ def cosine_distance(vec1, vec2):
     cos_similarity = dot_product / (norm1 * norm2)
     cos_distance = 1 - cos_similarity
 
-    print(f"Косинусное расстояние: {cos_distance}")
+    print(f"Cosine distance: {cos_distance}")
 
 vector1 = [1, 2, 3]
 vector2 = [4, 5, 6]
@@ -144,7 +144,7 @@ def query_word_distribution(queries):
     for word_count in sorted(word_count_dict):
         count = word_count_dict[word_count]
         percentage = (count / total_queries) * 100
-        print(f"{word_count} слово: {percentage:.2f}%")
+        print(f"{word_count} word: {percentage:.2f}%")
 
 search_queries = [
     "watch new movies",
